@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Winkelmandje - SunnyFly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./**/*.html"],
+            theme: { extend: { colors: { primary: '#00AEEF', accent: '#FFDD00' } } }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- NAVIGATIEBALK (zelfde) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center text-white text-2xl md:text-3xl font-bold">☀️</div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-primary">Sunny<span class="text-accent">Fly</span></h1>
+                    <p class="text-[10px] md:text-xs text-gray-500 -mt-1">Brussel ✈️</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex gap-6 lg:gap-8 text-base lg:text-lg items-center">
+                <a href="index.html" class="hover:text-accent transition">Home</a>
+                <a href="producten.html" class="hover:text-accent transition">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent transition">Over ons</a>
+                <a href="contact.html" class="hover:text-accent transition">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent transition flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">2</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent transition">Vacatures</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
+        </div>
+
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-4">
+            <div class="flex flex-col space-y-5 text-lg">
+                <a href="index.html" class="hover:text-accent">Home</a>
+                <a href="producten.html" class="hover:text-accent">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent">Over ons</a>
+                <a href="contact.html" class="hover:text-accent">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count-mobile" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">2</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent">Vacatures</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div class="flex justify-between items-center mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold">Je winkelmandje</h1>
+            <a href="index.html" class="bg-gray-200 hover:bg-gray-300 px-6 py-3 rounded-2xl font-medium flex items-center gap-2">
+                ← Terug naar home
+            </a>
+        </div>
+
+        <div class="bg-white rounded-3xl shadow p-8 md:p-12">
+            <div class="space-y-8">
+                <div class="flex justify-between items-center border-b pb-6">
+                    <div>
+                        <p class="font-semibold text-lg">Rome retour • 1 volwassene</p>
+                        <p class="text-gray-500">Vertrek 15 mei 2026</p>
+                    </div>
+                    <p class="font-semibold text-xl">€89</p>
+                </div>
+                <div class="flex justify-between items-center border-b pb-6">
+                    <div>
+                        <p class="font-semibold text-lg">Barcelona retour • 2 personen</p>
+                        <p class="text-gray-500">Vertrek 22 mei 2026</p>
+                    </div>
+                    <p class="font-semibold text-xl">€138</p>
+                </div>
+            </div>
+
+            <div class="mt-12 flex justify-between text-2xl font-bold">
+                <span>Totaal</span>
+                <span>€227</span>
+            </div>
+
+            <button onclick="alert('Dit is een demo – betaling zou hier komen!')" 
+                    class="mt-10 w-full bg-accent hover:bg-yellow-400 text-black font-semibold py-5 rounded-2xl text-xl transition">
+                Doorgaan naar bestelling
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-primary text-white py-8 text-center">
+        <p>© 2026 SunnyFly - Gesticht in Brussel</p>
+    </footer>
+
+    <script>
+        let cartCount = 2; // voorbeeld: 2 items
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cartCount;
+            const mobile = document.getElementById('cart-count-mobile');
+            if (mobile) mobile.textContent = cartCount;
+        }
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+        updateCart();
+    </script>
+</body>
+</html>

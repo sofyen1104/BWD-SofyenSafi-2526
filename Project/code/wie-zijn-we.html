@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Over ons - SunnyFly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./**/*.html"],
+            theme: { extend: { colors: { primary: '#00AEEF', accent: '#FFDD00' } } }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- NAVIGATIEBALK -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center text-white text-2xl md:text-3xl font-bold">☀️</div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-primary">Sunny<span class="text-accent">Fly</span></h1>
+                    <p class="text-[10px] md:text-xs text-gray-500 -mt-1">Brussel ✈️</p>
+                </div>
+            </div>
+
+            <div class="hidden md:flex gap-6 lg:gap-8 text-base lg:text-lg items-center">
+                <a href="index.html" class="hover:text-accent transition">Home</a>
+                <a href="producten.html" class="hover:text-accent transition">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent transition">Over ons</a>
+                <a href="contact.html" class="hover:text-accent transition">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent transition flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent transition">Vacatures</a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
+        </div>
+
+        <!-- Mobiel menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-4">
+            <div class="flex flex-col space-y-5 text-lg">
+                <a href="index.html" class="hover:text-accent">Home</a>
+                <a href="producten.html" class="hover:text-accent">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent">Over ons</a>
+                <a href="contact.html" class="hover:text-accent">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count-mobile" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent">Vacatures</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 md:px-6 py-12 md:py-16">
+        <div class="flex justify-between items-center mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold">Wie zijn we?</h1>
+            <a href="index.html" class="bg-gray-200 hover:bg-gray-300 px-6 py-3 rounded-2xl font-medium flex items-center gap-2">
+                ← Terug naar home
+            </a>
+        </div>
+
+        <div class="prose prose-lg text-gray-700">
+            <p class="text-xl leading-relaxed">
+                SunnyFly is een jong, lokaal Brussels bedrijf opgericht in 2024. Wij maken vliegen betaalbaar en eenvoudig 
+                voor iedereen die wil reizen – van families tot studenten en avonturiers.
+            </p>
+
+            <h2 class="text-2xl font-semibold mt-12 mb-4 text-primary">Onze missie</h2>
+            <p>Iedereen de kans geven om de wereld te ontdekken zonder een fortuin uit te geven, met vertrek vanuit Brussel Airport.</p>
+
+            <h2 class="text-2xl font-semibold mt-12 mb-4 text-primary">Onze waarden</h2>
+            <ul class="list-disc pl-6 space-y-3">
+                <li>Transparante prijzen zonder verborgen kosten</li>
+                <li>Snelle en vriendelijke Nederlandstalige service</li>
+                <li>Duurzaam reizen stimuleren (CO₂-compensatie inbegrepen)</li>
+                <li>Lokaal verankerd in Brussel</li>
+                <li>Betrouwbaarheid en veiligheid voorop</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer class="bg-primary text-white py-8 text-center">
+        <p>© 2026 SunnyFly - Gesticht in Brussel</p>
+    </footer>
+
+    <script>
+        let cartCount = 0;
+        function updateCart() {
+            document.getElementById('cart-count').textContent = cartCount;
+            const mobile = document.getElementById('cart-count-mobile');
+            if (mobile) mobile.textContent = cartCount;
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        }
+
+        updateCart();
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onze Reizen - SunnyFly</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            content: ["./**/*.html"],
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#00AEEF',
+                        accent: '#FFDD00'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="font-sans bg-gray-50">
+
+    <!-- NAVIGATIEBALK (volledig responsief + winkelmandje teller) -->
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-primary to-accent rounded-2xl flex items-center justify-center text-white text-2xl md:text-3xl font-bold">☀️</div>
+                <div>
+                    <h1 class="text-xl md:text-2xl font-bold text-primary">Sunny<span class="text-accent">Fly</span></h1>
+                    <p class="text-[10px] md:text-xs text-gray-500 -mt-1">Brussel ✈️</p>
+                </div>
+            </div>
+
+            <!-- Desktop menu -->
+            <div class="hidden md:flex gap-6 lg:gap-8 text-base lg:text-lg items-center">
+                <a href="index.html" class="hover:text-accent transition">Home</a>
+                <a href="producten.html" class="hover:text-accent transition">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent transition">Over ons</a>
+                <a href="contact.html" class="hover:text-accent transition">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent transition flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent transition">Vacatures</a>
+            </div>
+
+            <!-- Mobiele hamburger -->
+            <button onclick="toggleMobileMenu()" class="md:hidden text-3xl">☰</button>
+        </div>
+
+        <!-- Mobiel menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t px-6 py-4">
+            <div class="flex flex-col space-y-5 text-lg">
+                <a href="index.html" class="hover:text-accent">Home</a>
+                <a href="producten.html" class="hover:text-accent">Producten</a>
+                <a href="wie-zijn-we.html" class="hover:text-accent">Over ons</a>
+                <a href="contact.html" class="hover:text-accent">Contact</a>
+                <a href="winkelkar.html" class="hover:text-accent flex items-center gap-2">
+                    🛒 Winkelmandje 
+                    <span id="cart-count-mobile" class="bg-red-500 text-white text-xs px-2 py-0.5 rounded-full">0</span>
+                </a>
+                <a href="vacatures.html" class="hover:text-accent">Vacatures</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hoofdinhoud -->
+    <div class="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16">
+        
+        <!-- Terug knop + titel -->
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-12">
+            <h1 class="text-3xl md:text-5xl font-bold text-gray-900">Onze bestemmingen</h1>
+            <a href="index.html" 
+               class="bg-gray-200 hover:bg-gray-300 px-6 py-3 rounded-2xl font-medium flex items-center gap-2 text-sm md:text-base transition">
+                ← Terug naar home
+            </a>
+        </div>
+
+        <div class="space-y-16 md:space-y-20">
+            
+            <!-- Rome -->
+            <div id="rome" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <img src="https://picsum.photos/id/1016/800/500" 
+                     class="w-full rounded-3xl shadow-lg object-cover" alt="Rome">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-3">Rome, Italië</h2>
+                    <p class="text-lg text-gray-600 mb-6">Vanaf €89 • Directe vlucht • 2u 30min</p>
+                    <button onclick="addToCart('Rome retour', 89)" 
+                            class="bg-accent hover:bg-yellow-400 text-black font-semibold px-8 py-4 rounded-2xl text-base md:text-lg transition">
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
+
+            <!-- Barcelona -->
+            <div id="barcelona" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <img src="https://picsum.photos/id/133/800/500" 
+                     class="w-full rounded-3xl shadow-lg object-cover" alt="Barcelona">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-3">Barcelona, Spanje</h2>
+                    <p class="text-lg text-gray-600 mb-6">Vanaf €69 • Directe vlucht • 2u</p>
+                    <button onclick="addToCart('Barcelona retour', 69)" 
+                            class="bg-accent hover:bg-yellow-400 text-black font-semibold px-8 py-4 rounded-2xl text-base md:text-lg transition">
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
+
+            <!-- Lissabon -->
+            <div id="lissabon" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <img src="https://picsum.photos/id/201/800/500" 
+                     class="w-full rounded-3xl shadow-lg object-cover" alt="Lissabon">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-3">Lissabon, Portugal</h2>
+                    <p class="text-lg text-gray-600 mb-6">Vanaf €79 • Directe vlucht • 3u</p>
+                    <button onclick="addToCart('Lissabon retour', 79)" 
+                            class="bg-accent hover:bg-yellow-400 text-black font-semibold px-8 py-4 rounded-2xl text-base md:text-lg transition">
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
+
+            <!-- Parijs -->
+            <div id="parijs" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <img src="https://picsum.photos/id/251/800/500" 
+                     class="w-full rounded-3xl shadow-lg object-cover" alt="Parijs">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-3">Parijs, Frankrijk</h2>
+                    <p class="text-lg text-gray-600 mb-6">Vanaf €59 • Directe vlucht • 1u 10min</p>
+                    <button onclick="addToCart('Parijs retour', 59)" 
+                            class="bg-accent hover:bg-yellow-400 text-black font-semibold px-8 py-4 rounded-2xl text-base md:text-lg transition">
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
+
+            <!-- Athene -->
+            <div id="athene" class="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
+                <img src="https://picsum.photos/id/870/800/500" 
+                     class="w-full rounded-3xl shadow-lg object-cover" alt="Athene">
+                <div>
+                    <h2 class="text-2xl md:text-3xl font-semibold mb-3">Athene, Griekenland</h2>
+                    <p class="text-lg text-gray-600 mb-6">Vanaf €119 • Directe vlucht • 3u 15min</p>
+                    <button onclick="addToCart('Athene retour', 119)" 
+                            class="bg-accent hover:bg-yellow-400 text-black font-semibold px-8 py-4 rounded-2xl text-base md:text-lg transition">
+                        Toevoegen aan winkelmandje
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8 text-center">
+        <p class="text-sm md:text-base">© 2026 SunnyFly - Gesticht in Brussel</p>
+    </footer>
+
+    <script>
+        let cartCount = 0;
+
+        function addToCart(name, price) {
+            cartCount++;
+            // Update teller op desktop en mobiel
+            document.getElementById('cart-count').textContent = cartCount;
+            const mobileCount = document.getElementById('cart-count-mobile');
+            if (mobileCount) mobileCount.textContent = cartCount;
+
+            alert(`✅ ${name} (€${price}) is toegevoegd aan je winkelmandje!`);
+        }
+
+        // Mobiel menu toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
